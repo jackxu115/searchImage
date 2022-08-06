@@ -7,9 +7,10 @@ const fetchPhoto = () => {
     fetch(`https://api.unsplash.com/search/photos?client_id=${data.access_key}&page=1&query=${data.searchWord}`)
         .then(json => json.json())
         .then(img => {
+            console.log(img)
             const imgURL = img.results[0].urls.regular
             backgroundImage(imgURL)
-        })
+        }).catch(error => console.log('this is error', error))
 }
 
 const cbInput = event => {
